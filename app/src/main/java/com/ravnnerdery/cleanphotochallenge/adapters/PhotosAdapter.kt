@@ -42,11 +42,10 @@ class PhotosAdapter(private val clickListener: PhotoClickListener) :
 
     abstract class ViewHolder(val binding: ViewDataBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        abstract fun bind(item: PhotoInfo}, clickListener: PhotoClickListener)
+        abstract fun bind(item: PhotoInfo, clickListener: PhotoClickListener)
     }
 
-    class SubViewHolderStraight private constructor(binding: PhotoViewStraightBinding) :
-        ViewHolder(binding) {
+    class SubViewHolderStraight private constructor(binding: PhotoViewStraightBinding) : ViewHolder(binding) {
         override fun bind(item: PhotoInfo, clickListener: PhotoClickListener) {
             val binding = binding as PhotoViewStraightBinding
             binding.photo = item
@@ -78,8 +77,7 @@ class PhotosAdapter(private val clickListener: PhotoClickListener) :
         }
     }
 
-    class SubViewHolderReverse private constructor(binding: PhotoViewReverseBinding) :
-        ViewHolder(binding) {
+    class SubViewHolderReverse private constructor(binding: PhotoViewReverseBinding) : ViewHolder(binding) {
         override fun bind(item: PhotoInfo, clickListener: PhotoClickListener) {
             val binding = binding as PhotoViewReverseBinding
             binding.photo = item
@@ -114,16 +112,16 @@ class PhotosAdapter(private val clickListener: PhotoClickListener) :
 
 }
 
-class PostListDiffCallBack : DiffUtil.ItemCallback<Photo>() {
-    override fun areItemsTheSame(oldItem: Photo, newItem: Photo): Boolean {
+class PostListDiffCallBack : DiffUtil.ItemCallback<PhotoInfo>() {
+    override fun areItemsTheSame(oldItem: PhotoInfo, newItem: PhotoInfo): Boolean {
         return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: Photo, newItem: Photo): Boolean {
+    override fun areContentsTheSame(oldItem: PhotoInfo, newItem: PhotoInfo): Boolean {
         return oldItem.id == newItem.id
     }
 }
 
 class PhotoClickListener(val clickListener: (postId: Long) -> Unit) {
-    fun onClick(photo: Photo) = clickListener(photo.id)
+    fun onClick(photo: PhotoInfo) = clickListener(photo.id)
 }

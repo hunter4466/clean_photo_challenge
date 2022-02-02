@@ -10,12 +10,12 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.model.GlideUrl
 import com.bumptech.glide.load.model.LazyHeaders
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.ravnnerdery.photo_challenge.R
-import com.ravnnerdery.photo_challenge.database.tables.Photo
-import com.ravnnerdery.photo_challenge.databinding.EnlargedPhotoBinding
+import com.ravnnerdery.cleanphotochallenge.R
+import com.ravnnerdery.cleanphotochallenge.databinding.EnlargedPhotoBinding
+import com.ravnnerdery.domain.models.PhotoInfo
 
 class EnlargedPhotoAdapter :
-    ListAdapter<Photo, EnlargedPhotoAdapter.ViewHolder>(EnlargedPhotoDiffCallBack()) {
+    ListAdapter<PhotoInfo, EnlargedPhotoAdapter.ViewHolder>(EnlargedPhotoDiffCallBack()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
@@ -28,7 +28,7 @@ class EnlargedPhotoAdapter :
 
     class ViewHolder private constructor(private val binding: EnlargedPhotoBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind( item: Photo) {
+        fun bind( item: PhotoInfo) {
             binding.executePendingBindings()
             val uri = GlideUrl(
                 item.thumbnailUrl, LazyHeaders.Builder()
@@ -54,12 +54,12 @@ class EnlargedPhotoAdapter :
     }
 }
 
-class EnlargedPhotoDiffCallBack : DiffUtil.ItemCallback<Photo>() {
-    override fun areItemsTheSame(oldItem: Photo, newItem: Photo): Boolean {
+class EnlargedPhotoDiffCallBack : DiffUtil.ItemCallback<PhotoInfo>() {
+    override fun areItemsTheSame(oldItem: PhotoInfo, newItem: PhotoInfo): Boolean {
         return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: Photo, newItem: Photo): Boolean {
+    override fun areContentsTheSame(oldItem: PhotoInfo, newItem: PhotoInfo): Boolean {
         return oldItem.id == newItem.id
     }
 }

@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearSnapHelper
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import androidx.recyclerview.widget.SnapHelper
-import com.ravnnerdery.photo_challenge.databinding.EnlargedPhotoFragmentBinding
+import com.ravnnerdery.cleanphotochallenge.adapters.EnlargedPhotoAdapter
+import com.ravnnerdery.cleanphotochallenge.databinding.EnlargedPhotoFragmentBinding
+import com.ravnnerdery.cleanphotochallenge.viewModels.EnlargedPhotoViewModel
 
 class EnlargedPhotoFragment : Fragment() {
 
