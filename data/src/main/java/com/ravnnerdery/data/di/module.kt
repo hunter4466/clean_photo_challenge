@@ -6,7 +6,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
 val DATAModule = module {
-    single<PhotosDatabase> {
+    single {
         Room.databaseBuilder(
             androidContext(),
             PhotosDatabase::class.java,
