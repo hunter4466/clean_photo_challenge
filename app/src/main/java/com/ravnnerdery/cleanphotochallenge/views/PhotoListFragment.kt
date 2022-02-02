@@ -14,7 +14,6 @@ class PhotoListFragment : Fragment() {
     companion object {
         fun newInstance() = PhotoListFragment()
     }
-
     private lateinit var viewModel: PhotoListViewModel
 
     override fun onCreateView(
