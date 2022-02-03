@@ -3,21 +3,22 @@ buildscript {
     ext {
         version_core = "1.3.1"
         version_coroutine = "1.3.7"
-        version_navigation = '2.2.0'
+        version_navigation = "2.2.0"
         version_constraint_layout = "2.0.0-rc1"
-        version_gradle = '4.0.1'
+        version_gradle = "7.3.3"
         version_kotlin = "1.6.10"
         version_lifecycle_extensions = "2.2.0"
         version_lifecycle = "2.2.0"
-        version_room = "2.4.1"
+        version_room = "2.2.4"
         version_appcompat = "1.2.0"
         version_fragment = "1.0.0"
         version_retrofit = "2.9.0"
         version_moshi = "1.12.0"
-        koin_version = "3.0.2"
+        koin_version = '2.1.6'
+
     }
     repositories {
-        google()
+       google()
         mavenCentral()
     }
     dependencies {
@@ -28,6 +29,7 @@ buildscript {
         // in the individual module build.gradle files
     }
 }
+
 
 task clean(type: Delete) {
     delete rootProject.buildDir

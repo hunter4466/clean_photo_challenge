@@ -2,7 +2,7 @@ package com.ravnnerdery.cleanphotochallenge.viewModels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.ravnnerdery.domain.models.MainRepository
+import com.ravnnerdery.data.repository.MainRepository
 
 class PhotoListViewModel(private val repo : MainRepository) : ViewModel() {
 

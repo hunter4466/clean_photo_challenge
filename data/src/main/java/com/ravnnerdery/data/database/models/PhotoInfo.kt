@@ -1,4 +1,4 @@
-package com.ravnnerdery.domain.models
+package com.ravnnerdery.data.database.models
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

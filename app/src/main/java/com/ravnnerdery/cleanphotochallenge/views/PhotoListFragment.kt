@@ -9,8 +9,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.ravnnerdery.cleanphotochallenge.viewModels.PhotoListViewModel
-import com.ravnnerdery.cleanphotochallenge.adapters.PhotoClickListener
 import com.ravnnerdery.cleanphotochallenge.adapters.PhotosAdapter
+import com.ravnnerdery.cleanphotochallenge.adapters.viewHolders.photoListViewHolder.PhotoClickListener
 import com.ravnnerdery.cleanphotochallenge.databinding.PhotoListFragmentBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

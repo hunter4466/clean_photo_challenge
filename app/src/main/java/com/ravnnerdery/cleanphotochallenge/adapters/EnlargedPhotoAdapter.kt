@@ -1,65 +1,23 @@
 package com.ravnnerdery.cleanphotochallenge.adapters
 
-import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.webkit.WebSettings
 import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.model.GlideUrl
-import com.bumptech.glide.load.model.LazyHeaders
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.ravnnerdery.cleanphotochallenge.R
-import com.ravnnerdery.cleanphotochallenge.databinding.EnlargedPhotoBinding
-import com.ravnnerdery.domain.models.PhotoInfo
+import com.ravnnerdery.cleanphotochallenge.adapters.viewHolders.enlargedPhotoViewHolder.EnlargedPhotoDiffCallBack
+import com.ravnnerdery.cleanphotochallenge.adapters.viewHolders.enlargedPhotoViewHolder.EnlargedPhotoViewHolder
+import com.ravnnerdery.data.database.models.PhotoInfo
 
 class EnlargedPhotoAdapter :
-    ListAdapter<PhotoInfo, EnlargedPhotoAdapter.ViewHolder>(EnlargedPhotoDiffCallBack()) {
+    ListAdapter<PhotoInfo, EnlargedPhotoViewHolder>(EnlargedPhotoDiffCallBack()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder.from(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EnlargedPhotoViewHolder {
+        return EnlargedPhotoViewHolder.from(parent)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: EnlargedPhotoViewHolder, position: Int) {
         val item = getItem(position)
             holder.bind(item)
     }
 
-    class ViewHolder private constructor(private val binding: EnlargedPhotoBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind( item: PhotoInfo) {
-            binding.executePendingBindings()
-            val uri = GlideUrl(
-                item.thumbnailUrl, LazyHeaders.Builder()
-                    .addHeader(
-                        "User-Agent",
-                        WebSettings.getDefaultUserAgent(binding.enlargedPhotoView.context)
-                    )
-                    .build()
-            )
-            Glide.with(binding.enlargedPhotoView.context)
-                .load(uri)
-                .placeholder(R.drawable.background_img)
-                .transition(DrawableTransitionOptions.withCrossFade(150))
-                .into(binding.enlargedPhotoView)
-        }
-
-        companion object {
-            fun from(parent: ViewGroup): ViewHolder {
-                val layoutInflater = LayoutInflater.from(parent.context)
-                return ViewHolder(EnlargedPhotoBinding.inflate(layoutInflater, parent, false))
-            }
-        }
-    }
 }
 
-class EnlargedPhotoDiffCallBack : DiffUtil.ItemCallback<PhotoInfo>() {
-    override fun areItemsTheSame(oldItem: PhotoInfo, newItem: PhotoInfo): Boolean {
-        return oldItem.id == newItem.id
-    }
 
-    override fun areContentsTheSame(oldItem: PhotoInfo, newItem: PhotoInfo): Boolean {
-        return oldItem.id == newItem.id
-    }
-}

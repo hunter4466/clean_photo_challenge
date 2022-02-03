@@ -2,7 +2,7 @@ package com.ravnnerdery.cleanphotochallenge.utils
 
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import com.ravnnerdery.domain.models.PhotoInfo
+import com.ravnnerdery.data.database.models.PhotoInfo
 
 @BindingAdapter("capitalizeText")
 fun TextView.setCapitalizedTitle(item: PhotoInfo?){

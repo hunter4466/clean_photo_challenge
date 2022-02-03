@@ -6,11 +6,11 @@
     <data>
         <variable
             name="photo"
-            type="com.ravnnerdery.domain.models.PhotoInfo" />
+            type="com.ravnnerdery.data.database.models.PhotoInfo" />
 
         <variable
             name="clickListener"
-            type="com.ravnnerdery.cleanphotochallenge.adapters.PhotoClickListener" />
+            type="com.ravnnerdery.cleanphotochallenge.adapters.viewHolders.photoListViewHolder.PhotoClickListener" />
 
     </data>
 
