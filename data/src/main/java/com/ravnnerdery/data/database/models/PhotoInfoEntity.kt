@@ -16,7 +16,7 @@ class PhotoInfoEntity(
     var url: String,
     @ColumnInfo(name = "thumbnailUrl")
     var thumbnailUrl: String
-): DomainMapper<PhotoInfo>{
+) : DomainMapper<PhotoInfo> {
     override fun mapToDomainModel(): PhotoInfo = PhotoInfo(
         id, title, url, thumbnailUrl
     )

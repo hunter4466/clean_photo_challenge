@@ -30,24 +30,30 @@ class EnlargedPhotoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val args = EnlargedPhotoFragmentArgs.fromBundle(requireArguments())
-        binding.let{
+        binding.let {
             adapter = EnlargedPhotoAdapter()
             it.enlargedPhotoRecyclerView.adapter = adapter
             snapHelper = LinearSnapHelper()
             snapHelper.attachToRecyclerView(it.enlargedPhotoRecyclerView)
         }
-
-        enlargedPhotoViewModel.allPhotos().observe(viewLifecycleOwner, {
-            adapter.submitList(it)
-            if(enlargedPhotoViewModel.currentPosition == 0){
-                val argPosition = args.id.toInt() -1
-                binding.enlargedPhotoRecyclerView.scrollToPosition(argPosition)
-                enlargedPhotoViewModel.currentPosition = argPosition
+        enlargedPhotoViewModel.allPhotos()
+        enlargedPhotoViewModel.mutableAllPhotos.observe(viewLifecycleOwner, {
+            if (enlargedPhotoViewModel.currentPosition == 0) {
+                if (it.isNotEmpty()) {
+                    adapter.submitList(it)
+                    val argPosition = args.id.toInt() - 1
+                    binding.enlargedPhotoRecyclerView.scrollToPosition(argPosition)
+                    enlargedPhotoViewModel.currentPosition = argPosition
+                }
             } else {
-                enlargedPhotoViewModel.currentPosition?.let { it -> binding.enlargedPhotoRecyclerView.scrollToPosition(it) }
+                adapter.submitList(it)
+                enlargedPhotoViewModel.currentPosition?.let { it ->
+                    binding.enlargedPhotoRecyclerView.scrollToPosition(
+                        it
+                    )
+                }
             }
         })
-
     }
 
     override fun onDestroy() {
@@ -56,7 +62,6 @@ class EnlargedPhotoFragment : Fragment() {
             val snapPosition = snapView?.let { position -> it.getPosition(position) }
             enlargedPhotoViewModel.currentPosition = snapPosition
         }
-
         super.onDestroy()
     }
 

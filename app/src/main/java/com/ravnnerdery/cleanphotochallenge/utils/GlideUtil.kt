@@ -8,7 +8,7 @@ import com.bumptech.glide.load.model.LazyHeaders
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.ravnnerdery.cleanphotochallenge.R
 
-fun glidify (url: String, binding: ImageView){
+fun glidify(url: String, binding: ImageView) {
     val uri = GlideUrl(
         url, LazyHeaders.Builder()
             .addHeader(

@@ -1,6 +1,6 @@
 package com.ravnnerdery.domain.models
 
-class PhotoInfo(
+data class PhotoInfo(
     var id: Long,
     var title: String,
     var url: String,

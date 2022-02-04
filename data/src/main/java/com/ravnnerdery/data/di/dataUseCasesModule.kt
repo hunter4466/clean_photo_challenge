@@ -7,6 +7,6 @@ import com.ravnnerdery.data.useCases.LoadApiToDbUseCaseImpl
 import org.koin.dsl.module
 
 val dataUseCasesModule = module {
-    factory<GetAllPhotosUseCase>{GetAllPhotosUseCaseImpl(get())}
-    factory<LoadApiToDbUseCase>{ LoadApiToDbUseCaseImpl(get()) }
+    factory<GetAllPhotosUseCase> { GetAllPhotosUseCaseImpl(get()) }
+    factory<LoadApiToDbUseCase> { LoadApiToDbUseCaseImpl(get()) }
 }

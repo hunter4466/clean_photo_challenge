@@ -18,5 +18,4 @@ val dataBaseModule = module {
             .fallbackToDestructiveMigration()
             .build()
     }
-
 }

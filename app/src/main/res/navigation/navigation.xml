@@ -9,7 +9,7 @@
         android:id="@+id/photoListFragment"
         android:name="com.ravnnerdery.cleanphotochallenge.views.PhotoListFragment"
         android:label="photo_list_fragment"
-        tools:layout="@layout/photo_list_fragment" >
+        tools:layout="@layout/photo_list_fragment">
         <action
             android:id="@+id/action_photoListFragment_to_enlargedPhotoFragment"
             app:destination="@id/enlargedPhotoFragment" />
@@ -18,7 +18,7 @@
         android:id="@+id/enlargedPhotoFragment"
         android:name="com.ravnnerdery.cleanphotochallenge.views.EnlargedPhotoFragment"
         android:label="enlarged_photo_fragment"
-        tools:layout="@layout/enlarged_photo_fragment" >
+        tools:layout="@layout/enlarged_photo_fragment">
         <argument
             android:name="id"
             app:argType="long" />

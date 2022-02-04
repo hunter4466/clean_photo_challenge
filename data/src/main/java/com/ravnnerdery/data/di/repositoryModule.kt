@@ -1,6 +1,6 @@
 package com.ravnnerdery.data.di
 
-import com.ravnnerdery.data.repository.MainRepository
+import com.ravnnerdery.domain.repository.MainRepository
 import com.ravnnerdery.data.repository.MainRepositoryImpl
 import org.koin.dsl.module
 

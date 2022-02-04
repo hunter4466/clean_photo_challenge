@@ -1,6 +1,6 @@
 package com.ravnnerdery.data.networking.models
 
-class PhotoInfoResponse(
+data class PhotoInfoResponse(
     var id: Long,
     var title: String,
     var url: String,

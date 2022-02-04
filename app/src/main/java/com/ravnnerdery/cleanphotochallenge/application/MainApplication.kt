@@ -6,7 +6,6 @@ import com.ravnnerdery.data.di.dataBaseModule
 import com.ravnnerdery.data.di.dataUseCasesModule
 import com.ravnnerdery.data.di.networkModule
 import com.ravnnerdery.data.di.repositoryModule
-import com.ravnnerdery.domain.di.interactionModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -19,11 +18,10 @@ class MainApplication : Application() {
         startKoin {
             androidLogger(Level.ERROR)
             androidContext(this@MainApplication)
-            modules(appModules + dataModules + domainModules)
+            modules(appModules + dataModules)
         }
     }
     val appModules = listOf(appModule, dataBaseModule)
-    val dataModules = listOf( dataBaseModule, networkModule, repositoryModule, dataUseCasesModule )
-    val domainModules = listOf( interactionModule )
+    val dataModules = listOf(dataBaseModule, networkModule, repositoryModule, dataUseCasesModule)
 }
 

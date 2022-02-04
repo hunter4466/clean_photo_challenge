@@ -1,9 +1,8 @@
-package com.ravnnerdery.data.repository
+package com.ravnnerdery.domain.repository
 
-import androidx.lifecycle.LiveData
 import com.ravnnerdery.domain.models.PhotoInfo
 
 interface MainRepository {
     suspend fun allPhotosFromDatabase(): MutableList<PhotoInfo>
     fun loadFromApiAndSetIntoDatabase()
-}  
+}
