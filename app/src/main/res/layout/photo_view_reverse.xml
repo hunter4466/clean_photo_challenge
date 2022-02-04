@@ -6,7 +6,7 @@
     <data>
         <variable
             name="photo"
-            type="com.ravnnerdery.data.database.models.PhotoInfo" />
+            type="com.ravnnerdery.data.database.models.PhotoInfoEntity" />
 
         <variable
             name="clickListener"

@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "photo_table")
-class PhotoInfo(
+class PhotoInfoEntity(
     @PrimaryKey(autoGenerate = false)
     var id: Long,
     @ColumnInfo(name = "title")

@@ -1,9 +1,9 @@
 package com.ravnnerdery.cleanphotochallenge.viewModels
 
 import androidx.lifecycle.ViewModel
-import com.ravnnerdery.data.repository.MainRepository
+import com.ravnnerdery.data.useCases.GetAllPhotosUseCase
 
-class EnlargedPhotoViewModel(private val repo : MainRepository) : ViewModel() {
+class EnlargedPhotoViewModel(private val getAllPhotos : GetAllPhotosUseCase) : ViewModel() {
     var currentPosition: Int? = 0
-    fun allPhotos() = repo.allPhotosFromDatabase()
+    fun allPhotos() = getAllPhotos.execute()
 }

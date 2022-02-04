@@ -1,7 +1,7 @@
 package com.ravnnerdery.cleanphotochallenge.adapters.viewHolders.photoListViewHolder
 
-import com.ravnnerdery.data.database.models.PhotoInfo
+import com.ravnnerdery.data.database.models.PhotoInfoEntity
 
 class PhotoClickListener(val clickListener: (postId: Long) -> Unit) {
-    fun onClick(photo: PhotoInfo) = clickListener(photo.id)
+    fun onClick(photoEntity: PhotoInfoEntity) = clickListener(photoEntity.id)
 }

@@ -5,12 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ravnnerdery.cleanphotochallenge.databinding.EnlargedPhotoBinding
 import com.ravnnerdery.cleanphotochallenge.utils.glidify
-import com.ravnnerdery.data.database.models.PhotoInfo
+import com.ravnnerdery.data.database.models.PhotoInfoEntity
 
 class EnlargedPhotoViewHolder private constructor(private val binding: EnlargedPhotoBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(item: PhotoInfo) {
+    fun bind(item: PhotoInfoEntity) {
         binding.executePendingBindings()
         glidify(item.thumbnailUrl, binding.enlargedPhotoView)
     }

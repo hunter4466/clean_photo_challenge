@@ -81,11 +81,11 @@ dependencies {
     implementation "androidx.room:room-ktx:$version_room"
 
     // Koin
-    implementation "org.koin:koin-android:$koin_version"
+    implementation "org.koin:koin-android:$version_koin"
     // Koin AndroidX ViewModel features
-    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$version_koin"
     // Koin AndroidX Scope features
-    implementation "org.koin:koin-androidx-scope:$koin_version"
-    implementation "org.koin:koin-androidx-fragment:$koin_version"
+    implementation "org.koin:koin-androidx-scope:$version_koin"
+    implementation "org.koin:koin-androidx-fragment:$version_koin"
 
 }
