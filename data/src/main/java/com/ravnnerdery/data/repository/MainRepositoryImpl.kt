@@ -4,6 +4,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import com.ravnnerdery.data.database.DatabaseDao
 import com.ravnnerdery.data.database.models.PhotoInfoEntity
+import com.ravnnerdery.data.networking.models.PhotoInfoResponse
+import com.ravnnerdery.domain.models.PhotoInfo
 import com.ravnnerdery.photo_challenge.network.PhotosApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -20,17 +22,23 @@ class MainRepositoryImpl(
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    override fun allPhotosFromDatabase(): LiveData<List<PhotoInfoEntity>> = photosDao.getPhotos()
+    override suspend fun allPhotosFromDatabase(): MutableList<PhotoInfo> {
+        val allPhotos: MutableList<PhotoInfo> = mutableListOf()
+        photosDao.getPhotos().forEach{
+            allPhotos.add(it.mapToDomainModel())
+        }
+        return allPhotos
+    }
 
     override fun loadFromApiAndSetIntoDatabase() {
-        photosApi.retrofitService.getPhotos().enqueue(object : Callback<List<PhotoInfoEntity>> {
-            override fun onResponse(call: Call<List<PhotoInfoEntity>>, response: Response<List<PhotoInfoEntity>>) {
+        photosApi.retrofitService.getPhotos().enqueue(object : Callback<List<PhotoInfoResponse>> {
+            override fun onResponse(call: Call<List<PhotoInfoResponse>>, response: Response<List<PhotoInfoResponse>>) {
                 response.body()?.forEach { elm ->
                     addPostToDatabase(elm.id, elm.title, elm.url, elm.thumbnailUrl)
                 }
             }
 
-            override fun onFailure(call: Call<List<PhotoInfoEntity>>, t: Throwable) {
+            override fun onFailure(call: Call<List<PhotoInfoResponse>>, t: Throwable) {
                 Log.v("Network Response: ",t.message.toString())
             }
         })

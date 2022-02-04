@@ -41,13 +41,14 @@ class PhotoListFragment : Fragment() {
             }
         }
 
-        photoListViewModel.allPhotos().observe(viewLifecycleOwner, {
+        photoListViewModel.mutableAllPhotos.observe(viewLifecycleOwner, {
             adapter.submitList(it)
             if(photoListViewModel.currentPosition != 0){
                 photoListViewModel.currentPosition?.let { it1 -> binding?.photoListRecyclerView?.scrollToPosition(it1) }
             }
             binding?.photoListSwypeContainer?.isRefreshing = false
         })
+
 
         photoListViewModel.navigateToSnapshot.observe(this, { photo ->
             photo?.let{

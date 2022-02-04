@@ -3,10 +3,10 @@ package com.ravnnerdery.cleanphotochallenge.adapters
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.ravnnerdery.cleanphotochallenge.adapters.viewHolders.photoListViewHolder.*
-import com.ravnnerdery.data.database.models.PhotoInfoEntity
+import com.ravnnerdery.domain.models.PhotoInfo
 
 class PhotosAdapter(private val clickListener: PhotoClickListener) :
-    ListAdapter<PhotoInfoEntity, PhotoListViewHolder>(PostListDiffCallBack()) {
+    ListAdapter<PhotoInfo, PhotoListViewHolder>(PostListDiffCallBack()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoListViewHolder {
         return if (viewType == 1) {

@@ -14,6 +14,6 @@ interface DatabaseDao {
     fun insertPhoto(photoEntity: PhotoInfoEntity)
 
     @Query("SELECT * from photo_table LIMIT 100")
-    fun getPhotos(): LiveData<List<PhotoInfoEntity>>
+    fun getPhotos(): List<PhotoInfoEntity>
 
 }

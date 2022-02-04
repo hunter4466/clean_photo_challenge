@@ -2,9 +2,12 @@ package com.ravnnerdery.cleanphotochallenge.viewModels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.ravnnerdery.data.repository.MainRepository
+import androidx.lifecycle.viewModelScope
 import com.ravnnerdery.data.useCases.GetAllPhotosUseCase
 import com.ravnnerdery.data.useCases.LoadApiToDbUseCase
+import com.ravnnerdery.domain.models.PhotoInfo
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class PhotoListViewModel(
     private val getAllPhotos : GetAllPhotosUseCase,
@@ -28,6 +31,11 @@ class PhotoListViewModel(
     fun onSnapshotNavigated() {
         _navigateToSnapshot.value = null
     }
-
-    fun allPhotos() = getAllPhotos.execute()
+    val mutableAllPhotos = MutableLiveData<List<PhotoInfo>>(emptyList())
+    fun allPhotos(){
+        viewModelScope.launch(Dispatchers.IO){
+            mutableAllPhotos.postValue(getAllPhotos.execute())
+        }
+    }
+    //getAllPhotos.execute()
 }

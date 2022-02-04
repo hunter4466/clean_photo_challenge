@@ -1,9 +1,9 @@
 package com.ravnnerdery.data.repository
 
 import androidx.lifecycle.LiveData
-import com.ravnnerdery.data.database.models.PhotoInfoEntity
+import com.ravnnerdery.domain.models.PhotoInfo
 
 interface MainRepository {
-    fun allPhotosFromDatabase(): LiveData<List<PhotoInfoEntity>>
+    suspend fun allPhotosFromDatabase(): MutableList<PhotoInfo>
     fun loadFromApiAndSetIntoDatabase()
 }  

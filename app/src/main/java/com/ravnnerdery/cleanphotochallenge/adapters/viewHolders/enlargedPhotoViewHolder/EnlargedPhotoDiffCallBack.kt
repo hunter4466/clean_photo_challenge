@@ -1,14 +1,14 @@
 package com.ravnnerdery.cleanphotochallenge.adapters.viewHolders.enlargedPhotoViewHolder
 
 import androidx.recyclerview.widget.DiffUtil
-import com.ravnnerdery.data.database.models.PhotoInfoEntity
+import com.ravnnerdery.domain.models.PhotoInfo
 
-class EnlargedPhotoDiffCallBack : DiffUtil.ItemCallback<PhotoInfoEntity>() {
-    override fun areItemsTheSame(oldItem: PhotoInfoEntity, newItem: PhotoInfoEntity): Boolean {
+class EnlargedPhotoDiffCallBack : DiffUtil.ItemCallback<PhotoInfo>() {
+    override fun areItemsTheSame(oldItem: PhotoInfo, newItem: PhotoInfo): Boolean {
         return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: PhotoInfoEntity, newItem: PhotoInfoEntity): Boolean {
+    override fun areContentsTheSame(oldItem: PhotoInfo, newItem: PhotoInfo): Boolean {
         return oldItem.id == newItem.id
     }
 }
